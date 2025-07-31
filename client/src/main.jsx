@@ -10,6 +10,8 @@ import SignupPage from './pages/SignupPage';
 import DashboardPage from './pages/DashboardPage';
 import PricingPage from './pages/PricingPage';
 import VideoTutorialPage from './pages/VideoTutorialPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,8 @@ const router = createBrowserRouter([
       { path: 'dashboard', element: <DashboardPage /> },
       { path: 'payment', element: <PricingPage /> },
       { path: 'videos', element: <VideoTutorialPage /> },
+      { path: 'terms', element: <TermsOfServicePage /> },
+      { path: 'privacy', element: <PrivacyPolicyPage /> },
     ],
   },
 ]);

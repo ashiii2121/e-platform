@@ -105,8 +105,8 @@ function Footer() {
               &copy; {new Date().getFullYear()} EduWeb. All rights reserved.
             </p>
             <div className="footer__bottom-links">
-              <a href="#" className="footer__bottom-link">Privacy</a>
-              <a href="#" className="footer__bottom-link">Terms</a>
+              <Link to="/privacy" className="footer__bottom-link">Privacy</Link>
+              <Link to="/terms" className="footer__bottom-link">Terms</Link>
               <a href="#" className="footer__bottom-link">Cookies</a>
             </div>
           </div>

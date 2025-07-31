@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './AuthPage.css';
+import { FaUser, FaLock } from 'react-icons/fa';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -23,29 +24,40 @@ function LoginPage() {
   };
 
   return (
-    <div className="auth-container">
-      <form className="auth-form" onSubmit={handleSubmit}>
+    <div className="auth-container gradient-bg">
+      <form className="auth-form glass-effect" onSubmit={handleSubmit}>
+        <div className="icon-circle">
+          <FaUser size={40} color="#00796b" />
+        </div>
         <h2>Login</h2>
         {error && <p className="error-message">{error}</p>}
         <div className="form-group">
           <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+          <div className="input-icon-group">
+            <FaUser className="input-icon" />
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Enter your email"
+            />
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div className="input-icon-group">
+            <FaLock className="input-icon" />
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Enter your password"
+            />
+          </div>
         </div>
         <button type="submit" className="btn primary">Login</button>
         <p className="auth-switch">Don't have an account? <a href="/signup">Sign Up</a></p>

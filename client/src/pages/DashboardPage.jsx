@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './DashboardPage.css';
+import Sidebar from '../components/dashboard/Sidebar';
+import Overview from '../components/dashboard/Overview';
+import VideoTutorials from '../components/dashboard/VideoTutorials';
+import PreviousPapers from '../components/dashboard/PreviousPapers';
+import ModelTest from '../components/dashboard/ModelTest';
+import Progress from '../components/dashboard/Progress';
 
 function DashboardPage() {
   const [videos, setVideos] = useState([]);
@@ -126,265 +132,27 @@ function DashboardPage() {
     );
   }
 
-  const renderOverview = () => (
-    <div className="dashboard__overview">
-      <div className="dashboard__welcome">
-        <h1>Welcome back, Student! 👋</h1>
-        <p>Continue your learning journey with our comprehensive resources</p>
-      </div>
-
-      <div className="dashboard__stats">
-        <div className="stat-card">
-          <div className="stat-card__icon">📚</div>
-          <div className="stat-card__content">
-            <h3>{videos.length}</h3>
-            <p>Video Tutorials</p>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-card__icon">📝</div>
-          <div className="stat-card__content">
-            <h3>{previousQuestions.length}</h3>
-            <p>Previous Papers</p>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-card__icon">🎯</div>
-          <div className="stat-card__content">
-            <h3>{modelQuestions.length}</h3>
-            <p>Model Tests</p>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-card__icon">⭐</div>
-          <div className="stat-card__content">
-            <h3>95%</h3>
-            <p>Success Rate</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="dashboard__quick-access">
-        <h2>Quick Access</h2>
-        <div className="quick-access-grid">
-          <button
-            className="quick-access-card"
-            onClick={() => setActiveSection('videos')}
-          >
-            <div className="quick-access-card__icon">🎥</div>
-            <h3>Watch Videos</h3>
-            <p>Continue learning with video tutorials</p>
-          </button>
-          <button
-            className="quick-access-card"
-            onClick={() => setActiveSection('previous-questions')}
-          >
-            <div className="quick-access-card__icon">📋</div>
-            <h3>Practice Papers</h3>
-            <p>Solve previous year questions</p>
-          </button>
-          <button
-            className="quick-access-card"
-            onClick={() => setActiveSection('model-questions')}
-          >
-            <div className="quick-access-card__icon">🧪</div>
-            <h3>Take Tests</h3>
-            <p>Attempt model question papers</p>
-          </button>
-          <Link to="/payment" className="quick-access-card">
-            <div className="quick-access-card__icon">💎</div>
-            <h3>Upgrade Plan</h3>
-            <p>Access premium features</p>
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
     <div className="dashboard">
-      <aside className="dashboard__sidebar">
-        <div className="sidebar__header">
-          <h2>Dashboard</h2>
-        </div>
-        <nav className="sidebar__nav">
-          <button
-            className={`nav-item ${activeSection === 'overview' ? 'nav-item--active' : ''}`}
-            onClick={() => setActiveSection('overview')}
-          >
-            <span className="nav-item__icon">🏠</span>
-            <span className="nav-item__text">Overview</span>
-          </button>
-          <button
-            className={`nav-item ${activeSection === 'videos' ? 'nav-item--active' : ''}`}
-            onClick={() => setActiveSection('videos')}
-          >
-            <span className="nav-item__icon">🎥</span>
-            <span className="nav-item__text">Video Tutorials</span>
-          </button>
-          <button
-            className={`nav-item ${activeSection === 'previous-questions' ? 'nav-item--active' : ''}`}
-            onClick={() => setActiveSection('previous-questions')}
-          >
-            <span className="nav-item__icon">📝</span>
-            <span className="nav-item__text">Previous Papers</span>
-          </button>
-          <button
-            className={`nav-item ${activeSection === 'model-questions' ? 'nav-item--active' : ''}`}
-            onClick={() => setActiveSection('model-questions')}
-          >
-            <span className="nav-item__icon">🎯</span>
-            <span className="nav-item__text">Model Tests</span>
-          </button>
-          <button
-            className={`nav-item ${activeSection === 'progress' ? 'nav-item--active' : ''}`}
-            onClick={() => setActiveSection('progress')}
-          >
-            <span className="nav-item__icon">📊</span>
-            <span className="nav-item__text">Progress</span>
-          </button>
-        </nav>
-      </aside>
-
+      <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
       <main className="dashboard__main">
         <div className="dashboard__content">
-          {activeSection === 'overview' && renderOverview()}
-
-          {activeSection === 'videos' && (
-            <div className="content-section">
-              <div className="section-header">
-                <h1>Video Tutorials</h1>
-                <p>Learn with our comprehensive video library</p>
-              </div>
-              <div className="video-grid">
-                {videos.map((video) => (
-                  <div className="video-card" key={video._id}>
-                    <div className="video-card__thumbnail">
-                      <img src={video.thumbnail} alt={video.title} />
-                      <div className="video-card__overlay">
-                        <button className="play-button">
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M8 5v14l11-7z" fill="currentColor"/>
-                          </svg>
-                        </button>
-                      </div>
-                      <span className="video-card__duration">{video.duration}</span>
-                    </div>
-                    <div className="video-card__content">
-                      <h3>{video.title}</h3>
-                      <p className="video-card__subject">{video.subject}</p>
-                      <p className="video-card__description">{video.description}</p>
-                      <a href={video.url} target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--small">
-                        Watch Now
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {activeSection === 'overview' && (
+            <Overview
+              videos={videos}
+              previousQuestions={previousQuestions}
+              modelQuestions={modelQuestions}
+              setActiveSection={setActiveSection}
+            />
           )}
-
-          {activeSection === 'previous-questions' && (
-            <div className="content-section">
-              <div className="section-header">
-                <h1>Previous Year Questions</h1>
-                <p>Practice with real exam papers from previous years</p>
-              </div>
-              <div className="question-grid">
-                {previousQuestions.map((question) => (
-                  <div className="question-card" key={question._id}>
-                    <div className="question-card__header">
-                      <div className="question-card__icon">📝</div>
-                      <div className="question-card__meta">
-                        <span className="question-card__year">{question.year}</span>
-                        <span className="question-card__subject">{question.subject}</span>
-                      </div>
-                    </div>
-                    <div className="question-card__content">
-                      <h3>{question.title}</h3>
-                      <p>Standard: {question.standard}</p>
-                      <div className="question-card__actions">
-                        <a href={question.pdfUrl} className="btn btn--outline btn--small">
-                          View PDF
-                        </a>
-                        <button className="btn btn--primary btn--small">
-                          Start Practice
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {activeSection === 'videos' && <VideoTutorials videos={videos} />}
+          {activeSection === 'previous-papers' && (
+            <PreviousPapers previousQuestions={previousQuestions} />
           )}
-
-          {activeSection === 'model-questions' && (
-            <div className="content-section">
-              <div className="section-header">
-                <h1>Model Question Papers</h1>
-                <p>Test your knowledge with expertly crafted model papers</p>
-              </div>
-              <div className="question-grid">
-                {modelQuestions.map((question) => (
-                  <div className="question-card" key={question._id}>
-                    <div className="question-card__header">
-                      <div className="question-card__icon">🎯</div>
-                      <div className="question-card__meta">
-                        <span className={`difficulty-badge difficulty-badge--${question.difficulty.toLowerCase()}`}>
-                          {question.difficulty}
-                        </span>
-                        <span className="question-card__subject">{question.subject}</span>
-                      </div>
-                    </div>
-                    <div className="question-card__content">
-                      <h3>{question.title}</h3>
-                      <p>Standard: {question.standard}</p>
-                      <div className="question-card__actions">
-                        <a href={question.pdfUrl} className="btn btn--outline btn--small">
-                          Download
-                        </a>
-                        <button className="btn btn--primary btn--small">
-                          Take Test
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {activeSection === 'model-tests' && (
+            <ModelTest modelQuestions={modelQuestions} />
           )}
-
-          {activeSection === 'progress' && (
-            <div className="content-section">
-              <div className="section-header">
-                <h1>Your Progress</h1>
-                <p>Track your learning journey and achievements</p>
-              </div>
-              <div className="progress-section">
-                <div className="progress-card">
-                  <h3>Overall Progress</h3>
-                  <div className="progress-bar">
-                    <div className="progress-bar__fill" style={{width: '75%'}}></div>
-                  </div>
-                  <p>75% Complete</p>
-                </div>
-                <div className="progress-card">
-                  <h3>Videos Watched</h3>
-                  <div className="progress-bar">
-                    <div className="progress-bar__fill" style={{width: '60%'}}></div>
-                  </div>
-                  <p>12 of 20 videos</p>
-                </div>
-                <div className="progress-card">
-                  <h3>Tests Completed</h3>
-                  <div className="progress-bar">
-                    <div className="progress-bar__fill" style={{width: '40%'}}></div>
-                  </div>
-                  <p>4 of 10 tests</p>
-                </div>
-              </div>
-            </div>
-          )}
+          {activeSection === 'progress' && <Progress />}
         </div>
       </main>
     </div>

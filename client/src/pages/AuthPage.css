@@ -1,19 +1,95 @@
+.hero-signup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  gap: 32px;
+}
+
+.hero-text {
+  max-width: 350px;
+  text-align: left;
+}
+
+.hero-text h1 {
+  font-size: 2.2em;
+  color: #00796b;
+  margin-bottom: 10px;
+}
+
+.hero-text .highlight {
+  color: #00bfae;
+  font-weight: bold;
+}
+
+.hero-text p {
+  color: #333;
+  font-size: 1.1em;
+  margin-bottom: 0;
+}
+
+.hero-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
 }
 
 .auth-form {
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 40px 32px 32px 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
   width: 100%;
   max-width: 400px;
   text-align: center;
+  position: relative;
+  backdrop-filter: blur(6px);
+}
+
+.glass-effect {
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+}
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0f7fa;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.input-icon-group {
+  display: flex;
+  align-items: center;
+  background: #f7fafc;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+}
+
+.input-icon {
+  margin-right: 8px;
+  color: #00796b;
+  font-size: 1.1em;
 }
 
 .auth-form h2 {
@@ -38,11 +114,11 @@
 .form-group input[type="password"],
 .form-group input[type="text"] {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 12px 10px;
+  border: none;
+  background: transparent;
   font-size: 1em;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  outline: none;
 }
 
 .auth-form .btn.primary {
