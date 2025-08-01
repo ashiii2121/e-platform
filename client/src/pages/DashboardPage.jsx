@@ -1,112 +1,118 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './DashboardPage.css';
-import Sidebar from '../components/dashboard/Sidebar';
-import Overview from '../components/dashboard/Overview';
-import VideoTutorials from '../components/dashboard/VideoTutorials';
-import PreviousPapers from '../components/dashboard/PreviousPapers';
-import ModelTest from '../components/dashboard/ModelTest';
-import Progress from '../components/dashboard/Progress';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./DashboardPage.css";
+import Sidebar from "../components/dashboard/Sidebar";
+import Overview from "../components/dashboard/Overview";
+import VideoTutorials from "../components/dashboard/VideoTutorials";
+import PreviousPapers from "../components/dashboard/PreviousPapers";
+import ModelTest from "../components/dashboard/ModelTest";
+import Progress from "../components/dashboard/Progress";
+import KeralaHSEDashboard from "../components/dashboard/KeralaHSEDashboard";
 
 function DashboardPage() {
   const [videos, setVideos] = useState([]);
   const [previousQuestions, setPreviousQuestions] = useState([]);
   const [modelQuestions, setModelQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeSection, setActiveSection] = useState('overview');
+  const [activeSection, setActiveSection] = useState("kerala-hse");
 
   // Mock data for demonstration
   const mockVideos = [
     {
-      _id: '1',
-      title: 'Algebra Fundamentals',
-      subject: 'Mathematics',
-      duration: '45 min',
-      thumbnail: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&w=400&q=80',
-      url: 'https://www.youtube.com/watch?v=example1',
-      description: 'Master the basics of algebra with step-by-step explanations'
+      _id: "1",
+      title: "Algebra Fundamentals",
+      subject: "Mathematics",
+      duration: "45 min",
+      thumbnail:
+        "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&w=400&q=80",
+      url: "https://www.youtube.com/watch?v=example1",
+      description:
+        "Master the basics of algebra with step-by-step explanations",
     },
     {
-      _id: '2',
-      title: 'Organic Chemistry Basics',
-      subject: 'Chemistry',
-      duration: '60 min',
-      thumbnail: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&w=400&q=80',
-      url: 'https://www.youtube.com/watch?v=example2',
-      description: 'Introduction to organic compounds and reactions'
+      _id: "2",
+      title: "Organic Chemistry Basics",
+      subject: "Chemistry",
+      duration: "60 min",
+      thumbnail:
+        "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&w=400&q=80",
+      url: "https://www.youtube.com/watch?v=example2",
+      description: "Introduction to organic compounds and reactions",
     },
     {
-      _id: '3',
-      title: 'Newton\'s Laws of Motion',
-      subject: 'Physics',
-      duration: '50 min',
-      thumbnail: 'https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?ixlib=rb-4.0.3&w=400&q=80',
-      url: 'https://www.youtube.com/watch?v=example3',
-      description: 'Understanding the fundamental laws of motion'
+      _id: "3",
+      title: "Newton's Laws of Motion",
+      subject: "Physics",
+      duration: "50 min",
+      thumbnail:
+        "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?ixlib=rb-4.0.3&w=400&q=80",
+      url: "https://www.youtube.com/watch?v=example3",
+      description: "Understanding the fundamental laws of motion",
     },
     {
-      _id: '4',
-      title: 'Cell Biology',
-      subject: 'Biology',
-      duration: '55 min',
-      thumbnail: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&w=400&q=80',
-      url: 'https://www.youtube.com/watch?v=example4',
-      description: 'Explore the structure and function of cells'
-    }
+      _id: "4",
+      title: "Cell Biology",
+      subject: "Biology",
+      duration: "55 min",
+      thumbnail:
+        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&w=400&q=80",
+      url: "https://www.youtube.com/watch?v=example4",
+      description: "Explore the structure and function of cells",
+    },
   ];
 
   const mockPreviousQuestions = [
     {
-      _id: '1',
-      title: 'Mathematics Board Exam 2023',
-      subject: 'Mathematics',
-      standard: 'Class 12',
-      year: '2023',
-      pdfUrl: '#'
+      _id: "1",
+      title: "Mathematics Board Exam 2023",
+      subject: "Mathematics",
+      standard: "Class 12",
+      year: "2023",
+      pdfUrl: "#",
     },
     {
-      _id: '2',
-      title: 'Physics Board Exam 2023',
-      subject: 'Physics',
-      standard: 'Class 12',
-      year: '2023',
-      pdfUrl: '#'
+      _id: "2",
+      title: "Physics Board Exam 2023",
+      subject: "Physics",
+      standard: "Class 12",
+      year: "2023",
+      pdfUrl: "#",
     },
     {
-      _id: '3',
-      title: 'Chemistry Board Exam 2022',
-      subject: 'Chemistry',
-      standard: 'Class 11',
-      year: '2022',
-      pdfUrl: '#'
-    }
+      _id: "3",
+      title: "Chemistry Board Exam 2022",
+      subject: "Chemistry",
+      standard: "Class 11",
+      year: "2022",
+      pdfUrl: "#",
+    },
   ];
 
   const mockModelQuestions = [
     {
-      _id: '1',
-      title: 'Mathematics Model Paper - Set A',
-      subject: 'Mathematics',
-      standard: 'Class 12',
-      difficulty: 'Medium',
-      pdfUrl: '#'
+      _id: "1",
+      title: "Mathematics Model Paper - Set A",
+      subject: "Mathematics",
+      standard: "Class 12",
+      difficulty: "Medium",
+      pdfUrl: "#",
     },
     {
-      _id: '2',
-      title: 'Physics Practice Test - Set B',
-      subject: 'Physics',
-      standard: 'Class 11',
-      difficulty: 'Hard',
-      pdfUrl: '#'
+      _id: "2",
+      title: "Physics Practice Test - Set B",
+      subject: "Physics",
+      standard: "Class 11",
+      difficulty: "Hard",
+      pdfUrl: "#",
     },
     {
-      _id: '3',
-      title: 'Chemistry Mock Exam - Set C',
-      subject: 'Chemistry',
-      standard: 'Class 10',
-      difficulty: 'Easy',
-      pdfUrl: '#'
-    }
+      _id: "3",
+      title: "Chemistry Mock Exam - Set C",
+      subject: "Chemistry",
+      standard: "Class 10",
+      difficulty: "Easy",
+      pdfUrl: "#",
+    },
   ];
 
   useEffect(() => {
@@ -134,10 +140,14 @@ function DashboardPage() {
 
   return (
     <div className="dashboard">
-      <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
+      <Sidebar
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+      />
       <main className="dashboard__main">
         <div className="dashboard__content">
-          {activeSection === 'overview' && (
+          {activeSection === "kerala-hse" && <KeralaHSEDashboard />}
+          {activeSection === "overview" && (
             <Overview
               videos={videos}
               previousQuestions={previousQuestions}
@@ -145,14 +155,14 @@ function DashboardPage() {
               setActiveSection={setActiveSection}
             />
           )}
-          {activeSection === 'videos' && <VideoTutorials videos={videos} />}
-          {activeSection === 'previous-papers' && (
+          {activeSection === "videos" && <VideoTutorials videos={videos} />}
+          {activeSection === "previous-papers" && (
             <PreviousPapers previousQuestions={previousQuestions} />
           )}
-          {activeSection === 'model-tests' && (
+          {activeSection === "model-tests" && (
             <ModelTest modelQuestions={modelQuestions} />
           )}
-          {activeSection === 'progress' && <Progress />}
+          {activeSection === "progress" && <Progress />}
         </div>
       </main>
     </div>

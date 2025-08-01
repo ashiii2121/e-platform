@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "npm run dev --prefix client"
+  },
   "dependencies": {
     "react-icons": "^5.5.0"
   }
