@@ -1,0 +1,149 @@
+.animated-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-glow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  opacity: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+/* Preset card styles */
+.animated-card.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.animated-card.solid {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.animated-card.gradient {
+  background: linear-gradient(135deg, #e0284a, #764ba2);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(224, 40, 74, 0.3);
+}
+
+.animated-card.neon {
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #e0284a;
+  border-radius: 15px;
+  box-shadow: 
+    0 0 20px rgba(224, 40, 74, 0.5),
+    inset 0 0 20px rgba(224, 40, 74, 0.1);
+  color: white;
+}
+
+/* Floating animation */
+.animated-card.floating {
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Pulse animation */
+.animated-card.pulse {
+  animation: cardPulse 3s ease-in-out infinite;
+}
+
+@keyframes cardPulse {
+  0%, 100% { 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  50% { 
+    box-shadow: 0 8px 30px rgba(224, 40, 74, 0.3);
+  }
+}
+
+/* Shimmer effect */
+.animated-card.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-card.shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animated-card {
+    transform-style: flat;
+  }
+  
+  /* Reduce hover effects on mobile */
+  .animated-card:hover {
+    transform: none !important;
+  }
+}
+
+/* Accessibility */
+.animated-card:focus {
+  outline: 2px solid #e0284a;
+  outline-offset: 2px;
+}
+
+.animated-card:focus-visible {
+  outline: 2px solid #e0284a;
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animated-card,
+  .animated-card *,
+  .animated-card::before,
+  .animated-card::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

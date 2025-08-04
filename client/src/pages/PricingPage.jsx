@@ -48,7 +48,7 @@ function PaymentPage() {
         <div className="pricing-plans">
           <div className="plan-item">
             <h3>Monthly Plan</h3>
-            <p className="price">$9.99/month</p>
+            <p className="price">99/month</p>
             <ul>
               <li>Full access to all videos</li>
               <li>All previous year questions</li>
@@ -58,7 +58,7 @@ function PaymentPage() {
           </div>
           <div className="plan-item featured">
             <h3>Yearly Plan</h3>
-            <p className="price">$99.99/year</p>
+            <p className="price">999/year</p>
             <ul>
               <li>Full access to all videos</li>
               <li>All previous year questions</li>
@@ -69,7 +69,7 @@ function PaymentPage() {
           </div>
           <div className="plan-item">
             <h3>Lifetime Access</h3>
-            <p className="price">$299.99 (One-time)</p>
+            <p className="price">2999 (One-time)</p>
             <ul>
               <li>Lifetime access to all content</li>
               <li>Future updates included</li>

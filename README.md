@@ -30,7 +30,7 @@ A comprehensive web platform providing access to Kerala Higher Secondary Educati
 
 ## 🚀 Live Demo
 
-Visit the live platform: [Kerala HSE Papers Platform](https://ashiii2121.github.io/e-platform)
+Visit the live platform: [Kerala HSE Papers Platform](https://ashik-eduweb.vercel.app/)
 
 ## 📁 Project Structure
 

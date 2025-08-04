@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { gsap } from "gsap";
+import { authAPI, handleApiError } from "../services/api";
 import "./EnhancedSignupPage.css";
 import {
   FaUser,
@@ -25,6 +27,57 @@ function EnhancedSignupPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [touched, setTouched] = useState({});
   const navigate = useNavigate();
+
+  const heroRef = useRef(null);
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    // GSAP entrance animations
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      heroRef.current,
+      { opacity: 0, x: -100 },
+      { opacity: 1, x: 0, duration: 1, ease: "power2.out" }
+    )
+      .fromTo(
+        formRef.current,
+        { opacity: 0, x: 100 },
+        { opacity: 1, x: 0, duration: 1, ease: "power2.out" },
+        "-=0.7"
+      )
+      .fromTo(
+        ".feature-item",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" },
+        "-=0.5"
+      )
+      .fromTo(
+        ".form-group",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" },
+        "-=0.3"
+      );
+
+    // Floating animation for hero icon
+    gsap.to(".hero-icon", {
+      y: -10,
+      duration: 3,
+      ease: "power1.inOut",
+      yoyo: true,
+      repeat: -1,
+    });
+
+    // Pulse animation for features
+    gsap.to(".feature-icon", {
+      scale: 1.1,
+      duration: 2,
+      ease: "power1.inOut",
+      yoyo: true,
+      repeat: -1,
+      stagger: 0.3,
+    });
+  }, []);
 
   // Validation functions
   const validateEmail = (email) => {
@@ -106,18 +159,20 @@ function EnhancedSignupPage() {
     setIsLoading(true);
 
     try {
-      // Simulate API call for demo
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Call the backend API
+      const response = await authAPI.signup(formData);
 
-      // In a real app, this would be an actual API call
-      // const { data } = await axios.post('/api/auth/signup', formData);
-      // localStorage.setItem('userInfo', JSON.stringify(data));
+      // Store user data and token
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userInfo", JSON.stringify(response.data.user));
+
+      // Show success message
+      alert("Account created successfully! Welcome to Kerala HSE Platform.");
 
       navigate("/dashboard");
     } catch (err) {
       setErrors({
-        submit:
-          err.response?.data?.message || "An error occurred during signup",
+        submit: handleApiError(err),
       });
     } finally {
       setIsLoading(false);
@@ -156,7 +211,7 @@ function EnhancedSignupPage() {
     <div className="signup-page">
       <div className="signup-container">
         {/* Hero Section */}
-        <div className="hero-section">
+        <div className="hero-section" ref={heroRef}>
           <div className="hero-content">
             <div className="hero-icon">
               <FaGraduationCap size={60} />
@@ -184,7 +239,7 @@ function EnhancedSignupPage() {
         </div>
 
         {/* Form Section */}
-        <div className="form-section">
+        <div className="form-section" ref={formRef}>
           <div className="form-container">
             <div className="form-header">
               <h2>Create Your Account</h2>
