@@ -27,6 +27,7 @@ const router = createBrowserRouter([
       { path: "subject/:subjectId", element: <SubjectPage /> },
       { path: "subject/:subjectId/paper/:paperId", element: <PaperViewPage /> },
       { path: "payment", element: <PricingPage /> },
+      { path: "pricing", element: <PricingPage /> },
       { path: "videos", element: <VideoTutorialPage /> },
       { path: "terms", element: <TermsOfServicePage /> },
       { path: "privacy", element: <PrivacyPolicyPage /> },

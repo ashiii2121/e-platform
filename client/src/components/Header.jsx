@@ -72,8 +72,8 @@ function Header() {
             </li>
             <li className="header__nav-item">
               <Link
-                to="/payment"
-                className={`header__nav-link ${isActiveLink('/payment') ? 'header__nav-link--active' : ''}`}
+                to="/pricing"
+                className={`header__nav-link ${isActiveLink('/pricing') ? 'header__nav-link--active' : ''}`}
               >
                 Pricing
               </Link>
@@ -123,8 +123,8 @@ function Header() {
             </li>
             <li className="header__mobile-nav-item">
               <Link
-                to="/payment"
-                className={`header__mobile-nav-link ${isActiveLink('/payment') ? 'header__mobile-nav-link--active' : ''}`}
+                to="/pricing"
+                className={`header__mobile-nav-link ${isActiveLink('/pricing') ? 'header__mobile-nav-link--active' : ''}`}
               >
                 Pricing
               </Link>

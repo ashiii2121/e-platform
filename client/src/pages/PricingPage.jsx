@@ -260,25 +260,54 @@ function PricingPage() {
     <div className="pricing-page">
       {/* Hero Section */}
       <div className="pricing-hero" ref={heroRef}>
-        <div className="hero-content">
-          <h1>Choose Your Perfect Plan</h1>
-          <p>
-            Unlock your potential with Kerala HSE Platform. Get access to 25+
-            years of question papers and boost your exam preparation.
-          </p>
+        <div className="hero-container">
+          <div className="hero-content">
+            <div className="hero-badge">
+              <FaCrown className="badge-icon" />
+              <span>Premium Education Platform</span>
+            </div>
 
-          <div className="hero-stats">
-            <div className="stat-item">
-              <FaUsers />
-              <span>10,000+ Students</span>
+            <h1 className="hero-title">
+              Choose Your <span className="hero-highlight">Perfect Plan</span>
+            </h1>
+
+            <p className="hero-description">
+              Unlock your potential with Kerala HSE Platform. Get access to 25+ years of question papers,
+              expert guidance, and comprehensive study materials to boost your exam preparation.
+            </p>
+
+            <div className="hero-stats">
+              <div className="stat-item">
+                <div className="stat-icon">
+                  <FaUsers />
+                </div>
+                <div className="stat-content">
+                  <span className="stat-number">10,000+</span>
+                  <span className="stat-label">Happy Students</span>
+                </div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-icon">
+                  <FaBookOpen />
+                </div>
+                <div className="stat-content">
+                  <span className="stat-number">25+</span>
+                  <span className="stat-label">Years of Papers</span>
+                </div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-icon">
+                  <FaStar />
+                </div>
+                <div className="stat-content">
+                  <span className="stat-number">4.9/5</span>
+                  <span className="stat-label">Average Rating</span>
+                </div>
+              </div>
             </div>
-            <div className="stat-item">
-              <FaBookOpen />
-              <span>25+ Years Papers</span>
-            </div>
-            <div className="stat-item">
-              <FaStar />
-              <span>4.9/5 Rating</span>
+
+            <div className="hero-cta">
+              <p className="cta-text">Join thousands of successful students today!</p>
             </div>
           </div>
         </div>
@@ -286,27 +315,32 @@ function PricingPage() {
 
       {/* Pricing Plans */}
       <div className="pricing-section">
-        <div className="container">
+        <div className="pricing-container">
+          <div className="pricing-header">
+            <h2 className="pricing-title">Choose Your Learning Journey</h2>
+            <p className="pricing-subtitle">
+              Select the perfect plan that fits your study goals and budget.
+              All plans include our core features with varying levels of access.
+            </p>
+          </div>
+
           {error && <div className="error-message global-error">{error}</div>}
 
           <div className="pricing-plans" ref={plansRef}>
             {pricingPlans.map((plan, index) => (
-              <AnimatedCard
+              <div
                 key={plan.id}
-                className={`pricing-card ${plan.popular ? "popular" : ""}`}
-                hoverEffect="lift"
-                glowColor={plan.color}
-                delay={index * 0.1}
+                className={`pricing-card ${plan.popular ? "pricing-card--popular" : ""}`}
               >
                 {plan.popular && (
                   <div className="popular-badge">
-                    <FaCrown />
-                    Most Popular
+                    <FaCrown className="popular-icon" />
+                    <span>Most Popular</span>
                   </div>
                 )}
 
                 <div className="plan-header">
-                  <div className="plan-icon" style={{ color: plan.color }}>
+                  <div className="plan-icon" style={{ color: "#FF8282" }}>
                     {plan.icon}
                   </div>
                   <h3 className="plan-name">{plan.name}</h3>
@@ -315,9 +349,10 @@ function PricingPage() {
 
                 <div className="plan-pricing">
                   {plan.originalPrice && (
-                    <span className="original-price">
-                      ₹{plan.originalPrice}
-                    </span>
+                    <div className="original-price">
+                      <span className="currency">₹</span>
+                      <span className="price">{plan.originalPrice}</span>
+                    </div>
                   )}
                   <div className="price-display">
                     <span className="currency">₹</span>
@@ -325,49 +360,41 @@ function PricingPage() {
                     <span className="period">/{plan.period}</span>
                   </div>
                   {plan.originalPrice && (
-                    <div className="savings">
-                      Save ₹{(plan.originalPrice - plan.price).toFixed(2)}
+                    <div className="savings-badge">
+                      <span>Save ₹{(plan.originalPrice - plan.price).toFixed(2)}</span>
                     </div>
                   )}
                 </div>
 
                 <div className="plan-features">
-                  <ul>
+                  <h4 className="features-title">What's included:</h4>
+                  <ul className="features-list">
                     {plan.features.map((feature, idx) => (
-                      <li key={idx}>
-                        <FaCheck className="check-icon" />
-                        {feature}
+                      <li key={idx} className="feature-item">
+                        <FaCheck className="feature-icon feature-icon--check" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                     {plan.limitations.map((limitation, idx) => (
-                      <li key={idx} className="limitation">
-                        <FaTimes className="times-icon" />
-                        {limitation}
+                      <li key={idx} className="feature-item feature-item--limitation">
+                        <FaTimes className="feature-icon feature-icon--times" />
+                        <span>{limitation}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 <div className="plan-action">
-                  <AnimatedButton
-                    variant={plan.popular ? "primary" : "outline"}
-                    size="large"
-                    animation="ripple"
-                    loading={isLoading}
+                  <button
+                    className={`plan-button ${plan.popular ? "plan-button--primary" : "plan-button--outline"}`}
                     onClick={() => handlePayment(plan)}
-                    className="plan-button"
-                    style={{
-                      background: plan.popular
-                        ? `linear-gradient(135deg, ${plan.color}, #764ba2)`
-                        : undefined,
-                      borderColor: plan.color,
-                      color: plan.popular ? "white" : plan.color,
-                    }}
+                    disabled={isLoading}
                   >
-                    {plan.buttonText}
-                  </AnimatedButton>
+                    <span>{plan.buttonText}</span>
+                    <FaRocket className="button-icon" />
+                  </button>
                 </div>
-              </AnimatedCard>
+              </div>
             ))}
           </div>
         </div>
