@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import EnhancedSignupPage from "./pages/EnhancedSignupPage";
 import DashboardPage from "./pages/DashboardPage";
 import SubjectPage from "./pages/SubjectPage";
+import PaperViewPage from "./pages/PaperViewPage";
 import PricingPage from "./pages/PricingPage";
 import VideoTutorialPage from "./pages/VideoTutorialPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "signup", element: <EnhancedSignupPage /> },
       { path: "dashboard", element: <DashboardPage /> },
       { path: "subject/:subjectId", element: <SubjectPage /> },
+      { path: "subject/:subjectId/paper/:paperId", element: <PaperViewPage /> },
       { path: "payment", element: <PricingPage /> },
       { path: "videos", element: <VideoTutorialPage /> },
       { path: "terms", element: <TermsOfServicePage /> },

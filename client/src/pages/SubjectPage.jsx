@@ -196,6 +196,10 @@ const SubjectPage = () => {
     }
   };
 
+  const handlePreview = (paper) => {
+    navigate(`/subject/${subjectId}/paper/${paper.id}`);
+  };
+
   if (loading) {
     return (
       <div className="subject-page">
@@ -379,6 +383,7 @@ const SubjectPage = () => {
                     variant="ghost"
                     size="medium"
                     animation="glow"
+                    onClick={() => handlePreview(paper)}
                     className="btn-preview"
                   >
                     👁️ Preview
