@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FileCard = ({ title, subject, standard, year, pdfUrl }) => {
   return (
@@ -8,9 +9,9 @@ const FileCard = ({ title, subject, standard, year, pdfUrl }) => {
         <h4>{title}</h4>
         <p>{subject} - {standard} ({year})</p>
       </div>
-      <a href={pdfUrl} className="btn btn--primary" target="_blank" rel="noopener noreferrer">
-        Download
-      </a>
+      <Link to={`/paper-view?pdfUrl=${encodeURIComponent(pdfUrl)}`} className="btn btn--primary">
+        View Paper
+      </Link>
     </div>
   );
 };

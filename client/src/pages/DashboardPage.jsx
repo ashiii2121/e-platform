@@ -68,7 +68,7 @@ function DashboardPage() {
       subject: "Mathematics",
       standard: "Class 12",
       year: "2023",
-      pdfUrl: "#",
+      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
       _id: "2",
@@ -76,7 +76,7 @@ function DashboardPage() {
       subject: "Physics",
       standard: "Class 12",
       year: "2023",
-      pdfUrl: "#",
+      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
       _id: "3",
@@ -84,7 +84,7 @@ function DashboardPage() {
       subject: "Chemistry",
       standard: "Class 11",
       year: "2022",
-      pdfUrl: "#",
+      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
   ];
 
