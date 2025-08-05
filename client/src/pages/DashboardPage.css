@@ -144,6 +144,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -241,11 +242,7 @@
   margin: 0;
 }
 
-.file-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: var(--space-6);
-}
+
 
 /* Dashboard Loading State */
 .dashboard__loading {
@@ -550,6 +547,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -922,6 +920,7 @@
     padding: var(--space-6);
   }
 
+  .file-grid,
   .video-grid,
   .question-grid {
     grid-template-columns: 1fr;
@@ -963,7 +962,8 @@
   .stat-card {
     flex-direction: column;
     text-align: center;
-    padding: var(--space-4);
+    padding: var(--space-3);
+    /* Reduced padding */
   }
 
   .stat-card__icon {
@@ -972,7 +972,8 @@
   }
 
   .quick-access-card {
-    padding: var(--space-4);
+    padding: var(--space-3);
+    /* Reduced padding */
   }
 
   .quick-access-card__icon {
@@ -988,16 +989,20 @@
   .section-header p {
     font-size: var(--text-base);
   }
-}
 
-@media (max-width: 320px) {
+  .video-card__content,
+  .question-card {
+    padding: var(--space-3);
+    /* Reduced padding */
+  }
+
   .question-card__subject {
     font-size: var(--text-xs);
-    padding: 4px 8px;
-    min-width: 60px;
+    min-width: 0;
     max-width: 100%;
+    width: 100%;
     text-align: center;
-    display: inline-block;
+    display: block;
     white-space: normal;
     word-break: break-word;
     animation: fadeInUp 0.6s ease-out;
@@ -1007,7 +1012,12 @@
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-xs);
     margin-bottom: 4px;
+    margin-left: 0;
+    margin-right: 0;
   }
+}
+
+@media (max-width: 320px) {
   .dashboard__main {
     padding: var(--space-2);
   }
@@ -1108,12 +1118,18 @@
 }
 
 @keyframes bounce {
-  0%, 20%, 60%, 100% {
+
+  0%,
+  20%,
+  60%,
+  100% {
     transform: translateY(0) scale(1);
   }
+
   40% {
     transform: translateY(-10px) scale(1.1);
   }
+
   80% {
     transform: translateY(-5px) scale(1.05);
   }
@@ -1123,9 +1139,11 @@
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.15);
   }
+
   100% {
     transform: scale(1.1);
   }
