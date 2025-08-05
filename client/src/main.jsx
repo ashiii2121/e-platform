@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       { path: "signup", element: <EnhancedSignupPage /> },
       { path: "dashboard", element: <DashboardPage /> },
       { path: "subject/:subjectId", element: <SubjectPage /> },
-      { path: "subject/:subjectId/paper/:paperId", element: <PaperViewPage /> },
+      { path: "paper-view", element: <PaperViewPage /> },
       { path: "payment", element: <PricingPage /> },
       { path: "pricing", element: <PricingPage /> },
       { path: "videos", element: <VideoTutorialPage /> },
