@@ -125,6 +125,13 @@
   }
 }
 
+@media (max-width: 320px) {
+  .animated-card {
+    /* Adjust padding or other properties for very small screens */
+    padding: 0.5rem; 
+  }
+}
+
 /* Accessibility */
 .animated-card:focus {
   outline: 2px solid #e0284a;

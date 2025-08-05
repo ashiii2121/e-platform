@@ -168,3 +168,42 @@
   color: inherit;
   margin: 0;
 }
+
+@media (max-width: 320px) {
+  .loader-small .loader-dots {
+    width: 20px;
+    height: 20px;
+  }
+  .loader-small .loader-dot {
+    width: 4px;
+    height: 4px;
+    margin-left: -2px;
+    margin-top: -2px;
+    transform-origin: 0 10px;
+  }
+  .loader-medium .loader-dots {
+    width: 30px;
+    height: 30px;
+  }
+  .loader-medium .loader-dot {
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
+    transform-origin: 0 15px;
+  }
+  .loader-large .loader-dots {
+    width: 40px;
+    height: 40px;
+  }
+  .loader-large .loader-dot {
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    margin-top: -4px;
+    transform-origin: 0 20px;
+  }
+  .loader-text {
+    font-size: 0.75rem;
+  }
+}

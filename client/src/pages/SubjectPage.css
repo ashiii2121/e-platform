@@ -767,6 +767,115 @@
   }
 }
 
+@media (max-width: 320px) {
+  .subject-page {
+    padding: 0.5rem;
+  }
+
+  .breadcrumb {
+    flex-wrap: wrap;
+    font-size: 0.7rem; /* Adjusted for very small screens */
+    margin-bottom: 0.75rem;
+    gap: 0.2rem;
+  }
+
+  .subject-header,
+  .filters-section,
+  .papers-section,
+  .download-all-section {
+    padding: 0.6rem; /* Further reduced padding */
+    margin-bottom: 0.6rem;
+  }
+
+  .subject-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem; /* Further reduced gap */
+  }
+
+  .subject-icon-large {
+    width: 50px; /* Even smaller icon */
+    height: 50px;
+    font-size: 2rem; /* Adjusted font size for icon */
+  }
+
+  .subject-details h1 {
+    font-size: 1.2rem; /* Further reduced heading font size */
+  }
+
+  .subject-class {
+    font-size: 0.55rem; /* Further reduced class text font size */
+  }
+
+  .subject-description {
+    font-size: 0.6rem; /* Further reduced description text font size */
+    line-height: 1; /* Even tighter line height */
+  }
+
+  .subject-stats {
+    flex-direction: column;
+    gap: 0.1rem; /* Minimal gap between stats */
+    padding: 0.4rem; /* Minimal padding */
+  }
+
+  .stat-number {
+    font-size: 0.9rem; /* Further reduced stat number font size */
+  }
+
+  .stat-label {
+    font-size: 0.5rem; /* Further reduced stat label font size */
+  }
+
+  .search-input,
+  .filter-select {
+    font-size: 0.8rem; /* Smaller input/select font */
+    padding: 0.4rem;
+  }
+
+  .papers-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem; /* Reduced gap */
+  }
+
+  .paper-card {
+    padding: 0.6rem; /* Reduced padding */
+  }
+
+  .paper-year {
+    font-size: 1rem; /* Smaller year font */
+    padding: 0.2rem 0.6rem;
+  }
+
+  .paper-title {
+    font-size: 0.85rem; /* Smaller paper title */
+  }
+
+  .paper-actions {
+    flex-direction: column;
+    gap: 0.3rem; /* Reduced gap */
+  }
+
+  .btn-download,
+  .btn-preview {
+    font-size: 0.75rem; /* Smaller button font */
+    padding: 0.4rem;
+  }
+
+  .download-all-card h3 {
+    font-size: 1rem; /* Smaller download all heading */
+  }
+
+  .download-all-card p {
+    font-size: 0.75rem; /* Smaller download all paragraph */
+  }
+
+  .btn-download-all {
+    font-size: 0.85rem; /* Smaller download all button font */
+    padding: 0.6rem 1rem;
+  }
+}
+
 @media (max-width: 360px) {
   .subject-page {
     padding: 0.5rem;
