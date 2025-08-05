@@ -326,6 +326,19 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .paper-header, .paper-info-bar, .viewer-controls {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .paper-viewer {
+    padding: 1.5rem;
+  }
+  .paper-page {
+    padding: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .paper-header {
     flex-direction: column;
@@ -337,10 +350,20 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+    width: 100%;
+  }
+  
+  .header-right {
+    width: 100%;
+  }
+
+  .download-button {
+    width: 100%;
+    justify-content: center;
   }
 
   .breadcrumb {
-    font-size: 0.8rem;
+    display: none; /* Hide breadcrumb on smaller screens for simplicity */
   }
 
   .paper-info-bar {
@@ -361,7 +384,9 @@
   }
 
   .viewer-controls {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
     padding: 1rem;
   }
@@ -369,16 +394,32 @@
   .controls-left,
   .controls-center,
   .controls-right {
-    gap: 0.5rem;
+    gap: 0.75rem;
+    flex-basis: auto;
+  }
+  
+  .controls-center {
+    order: -1; /* Move zoom to the top on mobile */
+    width: 100%;
+    justify-content: center;
+  }
+
+  .page-info, .zoom-info {
+    min-width: auto;
+    padding: 0 0.5rem;
   }
 
   .paper-viewer {
-    padding: 1rem;
+    padding: 1rem 0;
   }
 
   .paper-page {
     padding: 1.5rem;
     font-size: 0.9rem;
+    max-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
   }
 
   .paper-page-header h2 {
@@ -400,11 +441,7 @@
 }
 
 @media (max-width: 480px) {
-  .paper-header {
-    padding: 0.75rem;
-  }
-
-  .paper-info-bar {
+  .paper-header, .paper-info-bar, .viewer-controls {
     padding: 0.75rem;
   }
 
@@ -418,7 +455,16 @@
   }
 
   .viewer-controls {
-    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+  
+  .controls-left, .controls-right {
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+  
+  .page-info {
+    flex-grow: 1;
   }
 
   .control-btn {

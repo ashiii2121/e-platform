@@ -146,7 +146,7 @@ function PaperViewPage() {
             className="back-button"
           >
             <FaArrowLeft />
-            Back to Subject
+            <span className="button-text">Back to Subject</span>
           </AnimatedButton>
           
           <div className="breadcrumb">
@@ -167,7 +167,7 @@ function PaperViewPage() {
             className="download-button"
           >
             <FaDownload />
-            Download PDF
+            <span className="button-text">Download PDF</span>
           </AnimatedButton>
         </div>
       </div>
@@ -179,19 +179,19 @@ function PaperViewPage() {
           <div className="paper-meta">
             <span className="meta-item">
               <FaCalendarAlt />
-              {paper?.year}
+              <span className="meta-text">{paper?.year}</span>
             </span>
             <span className="meta-item">
               <FaClock />
-              {paper?.duration || '3 hours'}
+              <span className="meta-text">{paper?.duration || '3 hours'}</span>
             </span>
             <span className="meta-item">
               <FaFileAlt />
-              {paper?.type || 'Question Paper'}
+              <span className="meta-text">{paper?.type || 'Question Paper'}</span>
             </span>
             <span className="meta-item">
               <FaGraduationCap />
-              {paper?.difficulty || 'Standard'}
+              <span className="meta-text">{paper?.difficulty || 'Standard'}</span>
             </span>
           </div>
         </div>
