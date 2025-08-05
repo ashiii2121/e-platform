@@ -1,3 +1,4 @@
+
 .hero-signup {
   display: flex;
   flex-direction: row;
@@ -158,4 +159,25 @@
   color: red;
   margin-bottom: 15px;
   font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+  .auth-form {
+    padding: 30px 24px 24px 24px;
+  }
+
+  .hero-signup {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-form {
+    padding: 20px 16px 16px 16px;
+  }
+
+  .auth-form h2 {
+    font-size: 1.5em;
+  }
 }

@@ -169,6 +169,10 @@
   .card--padding-medium {
     padding: var(--space-4);
   }
+
+  .card--padding-small {
+    padding: var(--space-2);
+  }
   
   .card--padding-none .card__header,
   .card--padding-none .card__body,
