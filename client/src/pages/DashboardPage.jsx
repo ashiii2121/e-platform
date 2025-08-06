@@ -15,6 +15,7 @@ function DashboardPage() {
   const [modelQuestions, setModelQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("kerala-hse");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Mock data for demonstration
   const mockVideos = [
@@ -139,11 +140,18 @@ function DashboardPage() {
   }
 
   return (
-    <div className="dashboard">
+    <div className={`dashboard ${isSidebarOpen ? 'sidebar-open' : ''}`}>
+      <button className="hamburger-menu" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <Sidebar
         activeSection={activeSection}
         setActiveSection={setActiveSection}
+        isSidebarOpen={isSidebarOpen}
       />
+      <div className="dashboard__main-overlay" onClick={() => setIsSidebarOpen(false)}></div>
       <main className="dashboard__main">
         <div className="dashboard__content">
           {activeSection === "kerala-hse" && <KeralaHSEDashboard />}

@@ -48,7 +48,6 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
   border-radius: var(--radius-lg);
   color: white;
   transition: transform var(--transition-fast);

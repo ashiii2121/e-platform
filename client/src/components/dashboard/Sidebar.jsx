@@ -1,8 +1,8 @@
 import React from "react";
 
-const Sidebar = ({ activeSection, setActiveSection }) => {
+const Sidebar = ({ activeSection, setActiveSection, isSidebarOpen }) => {
   return (
-    <aside className="dashboard__sidebar">
+    <aside className={`dashboard__sidebar ${isSidebarOpen ? 'sidebar-open' : ''}`}>
       <div className="sidebar__header">
         <h2>Dashboard</h2>
       </div>
