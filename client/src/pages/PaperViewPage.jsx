@@ -31,7 +31,7 @@ function PaperViewPage() {
       </div>
       <div className="paper-viewer">
         {pdfUrl ? (
-          <iframe src={pdfUrl} title="Paper Viewer" width="100%" height="100%" />
+          <iframe src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/${pdfUrl}`} title="Paper Viewer" width="100%" height="100%" />
         ) : (
           <div className="error-container">
             <h2>No PDF to display</h2>
